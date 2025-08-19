@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(
     cors({
         origin: [
-            "https://blog-app-bice-two.vercel.app", // frontend
+            "https://blog-app-dshq.vercel.app", // frontend
             "http://localhost:3000"             // dev
         ],
         methods: ["GET", "POST", "PUT", "DELETE"],
