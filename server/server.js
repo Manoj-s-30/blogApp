@@ -1,37 +1,29 @@
 import express from "express";
-import "dotenv/config";
-import cors from "cors";
+import 'dotenv/config'
+import cors from 'cors';
 import connectToDb from "./config/config.js";
 import adminRouter from "./routes/adminRoutes.js";
 import { blogRouter } from "./routes/blogRoutes.js";
 
 const app = express();
 
-// Connect to DB
-connectToDb();
-
-// Middleware
+//middleware
+connectToDb()
 app.use(express.json());
+app.use(cors());
 
-// ✅ Configure CORS (allow your frontend domain + localhost for dev)
-app.use(
-    cors({
-        origin: ["https://blog-app-dshq.vercel.app", "http://localhost:3000"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+app.get('/', (req, res) => {
+    res.send("api is working")
+})
+app.use('/api/admin/', adminRouter)
+app.use('/api/blog/', blogRouter)
 
-// Routes
-app.get("/", (req, res) => {
-    res.send("API is working ✅");
-});
+const port = 'https://blog-app-bice-two.vercel.app/'
 
-app.use("/api/admin", adminRouter);
-app.use("/api/blog", blogRouter);
+app.listen(port, () => {
+    console.log("listening to port 3000")
+})
 
-// ✅ DO NOT call app.listen() on Vercel
-// const port = process.env.PORT || 3000;
-// app.listen(port, () => console.log(`Listening on ${port}`));
+export default app;
 
-export default app; // ✅ export app for Vercel
+
