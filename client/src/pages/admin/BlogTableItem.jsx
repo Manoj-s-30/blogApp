@@ -11,7 +11,7 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
         const cnfrm = window.confirm('Are you sure you want to delete this blog')
         if (!cnfrm) return;
         try {
-            const { data } = await axios.post('http://localhost:3000/api/blog/delete', { id: blog._id });
+            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/blog/delete', { id: blog._id });
 
             if (data.success) {
                 toast.success(data.message)
@@ -26,7 +26,7 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
     }
     const togglePublish = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3000/api/blog/toggle-publish', { id: blog._id });
+            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/blog/toggle-publish', { id: blog._id });
 
             if (data.success) {
                 toast.success(data.message)

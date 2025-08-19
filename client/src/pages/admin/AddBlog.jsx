@@ -29,7 +29,7 @@ const AddBlog = () => {
             const formData = new FormData();
             formData.append('blog', JSON.stringify(blog));
             formData.append('image', image);
-            const { data } = await axios.post('http://localhost:3000/api/blog/add', formData);
+            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/blog/add', formData);
             if (data.success) {
                 toast.success(data.message)
                 setImage(false);
@@ -50,7 +50,7 @@ const AddBlog = () => {
         if (!title) return toast.error('please enter a title');
         try {
             setLoading(true);
-            const { data } = await axios.post("http://localhost:3000/api/blog/generate", { prompt: title });
+            const { data } = await axios.post("https://blog-app-bice-two.vercel.app/api/blog/generate", { prompt: title });
             if (data.success) {
                 quillRef.current.root.innerHTML = parse(data.content)
             } else {

@@ -18,7 +18,7 @@ const Blog = () => {
     // let data = blog_data.find(item => item._id === id);
     // setData(data)/
     try {
-      let { data } = await axios.get(`http://localhost:3000/api/blog/${id}`);
+      let { data } = await axios.get(`https://blog-app-bice-two.vercel.app/api/blog/${id}`);
       data.success ? setData(data.data) : toast.error(data.message)
     } catch (error) {
       toast.error(error.message)
@@ -27,7 +27,7 @@ const Blog = () => {
   }
   const fetchComments = async () => {
     try {
-      const { data } = await axios.post('http://localhost:3000/api/blog/comment', { blogid: id });
+      const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/blog/comment', { blogid: id });
 
       if (data.success) {
         setComments(data.data);
@@ -45,7 +45,7 @@ const Blog = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:3000/api/blog/add-comment', { blog: id, name, content });
+      const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/blog/add-comment', { blog: id, name, content });
 
       if (data.success) {
         setComments(data.data);

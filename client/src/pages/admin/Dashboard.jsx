@@ -13,7 +13,7 @@ const Dashboard = () => {
     })
     const fetchDashboard = async () => {
         try {
-            const { data } = await axios.get('http://localhost:3000/api/admin/dashboard');
+            const { data } = await axios.get('https://blog-app-bice-two.vercel.app/api/admin/dashboard');
             if (data.success) {
                 setDashboardData(data.data)
             } else {

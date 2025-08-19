@@ -10,7 +10,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { data } = await axios.post('http://localhost:3000/api/admin/login', { email, password });
+            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/admin/login', { email, password });
             debugger
             if (data.success) {
                 setToken(data.token);
