@@ -16,10 +16,7 @@ app.use(express.json());
 // ✅ Configure CORS (allow your frontend domain + localhost for dev)
 app.use(
     cors({
-        origin: [
-            "https://blog-app-dshq.vercel.app", // frontend domain
-            "http://localhost:3000",            // dev
-        ],
+        origin: ["https://blog-app-dshq.vercel.app", "http://localhost:3000"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
     })
