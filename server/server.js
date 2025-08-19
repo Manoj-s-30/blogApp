@@ -6,6 +6,16 @@ import adminRouter from "./routes/adminRoutes.js";
 import { blogRouter } from "./routes/blogRoutes.js";
 
 const app = express();
+app.use(
+    cors({
+        origin: [
+            "https://blog-app-dshq-git-main-manojss-projects.vercel.app", // frontend on vercel
+            "http://localhost:3000" // dev
+        ],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
+);
 
 //middleware
 connectToDb()
