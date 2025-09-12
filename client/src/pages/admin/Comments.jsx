@@ -9,7 +9,7 @@ const Comments = () => {
 
     const fetchComments = async () => {
         try {
-            const { data } = await axios.get('https://blog-app-bice-two.vercel.app/api/admin/comments');
+            const { data } = await axios.get(`${VITE_BASE_URL}/api/admin/comments`);
             data.success ? setComments(data.data) : toast.error(data.message)
         } catch (error) {
             toast.error(error.message)

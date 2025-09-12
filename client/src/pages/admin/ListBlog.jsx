@@ -8,7 +8,7 @@ const ListBlog = () => {
     const [blogs, setBlogs] = useState([]);
     const fetchBlogs = async () => {
         try {
-            const { data } = await axios.get('https://blog-app-bice-two.vercel.app/api/admin/blogs');
+            const { data } = await axios.get(`${VITE_BASE_URL}/api/admin/blogs`);
             if (data.success) {
                 setBlogs(data.data);
                 toast.success(data.message)

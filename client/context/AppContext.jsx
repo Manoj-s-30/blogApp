@@ -16,7 +16,7 @@ export const AppProvider = ({ children }) => {
 
     const fetchBlogs = async () => {
         try {
-            const { data } = await axios.get("https://blog-app-bice-two.vercel.app/api/blog/all");
+            const { data } = await axios.get(`${VITE_BASE_URL}/api/blog/all`);
             if (data.success) {
                 setBlog(data.data);
             } else {

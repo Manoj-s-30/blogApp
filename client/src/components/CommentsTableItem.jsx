@@ -10,7 +10,7 @@ const CommentsTableItem = ({ comment, fetchComments }) => {
 
     const onApproveClick = async () => {
         try {
-            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/admin/approve-comment', { id: comment._id });
+            const { data } = await axios.post(`${VITE_BASE_URL}/api/admin/approve-comment`, { id: comment._id });
             if (data.success) {
                 toast.success('Comment updated successfully')
                 fetchComments()
@@ -21,7 +21,7 @@ const CommentsTableItem = ({ comment, fetchComments }) => {
     }
     const onDeleteClick = async () => {
         try {
-            const { data } = await axios.post('https://blog-app-bice-two.vercel.app/api/admin/delete-comment', { id: comment._id });
+            const { data } = await axios.post(`${VITE_BASE_URL}/api/admin/delete-comment`, { id: comment._id });
             if (data.success) {
                 toast.success('Comment deleted successfully ')
                 fetchComments();
